@@ -1,2 +1,153 @@
 # Chapter 1
-Hello, world!
+
+## Installing Ruby
+
+You'll be happy to know that Ruby comes preinstalled on all Mac's. Open the terminal on your machine and then type in
+
+```
+ruby -v
+```
+
+It will return something like `ruby 2.1.5p273` or similar. Ideally you want to have something over version 2.0.0 (the general system version) to be on the safer side. If you have a Windows machine, throw it in the bin and buy a Mac. You'll thank us later. On a serious note, if you want to use Windows, there are a few guides available on how to install Ruby on Windows.
+
+Now go back to the terminal and type
+
+```
+`irb`
+```
+
+This launches an interactive Ruby shell and will let you code along with this tutorial. Note any time you see code written in this tutorial it will:
+
+```
+look like this
+```
+
+# Method Calls
+
+In Ruby, what most languages call a ‘function’ is actually referred to as a ‘method’. There are a couple of ways to call a method in Ruby.
+
+```
+puts("Hello World!")
+```
+
+Here you’re calling the method puts, passing the String “Hello, world!” as the argument, inside parentheses.
+
+Parentheses are often optional/implicit in Ruby, so you could just as well type:
+
+```
+puts "Hello World!"
+```
+
+
+It’s also possible to pass multiple arguments to some methods. In these cases, each argument is separated by a comma:
+
+```
+puts("Hello World!", "I am coding.")
+```
+
+Although we often won’t need parentheses, in some cases they’re necessary. Rather than worrying about when to use them, let’s stick to using parentheses so we won’t be tripped up by these special cases.
+
+
+# Variables
+
+An ordinary, regular variable is known as a *local variable*. They are created through assignment using the *=* sign.
+
+```
+number = 21
+```
+
+You can have multiple words used and the general convention in Ruby is to use *snake case* like so:
+
+```
+my_lucky_number = 13
+```
+
+Slightly more readable right?
+
+# Truth and Falsehood
+
+In Ruby, everything is considered to be true, unless it's *false* or *nil*. That might seem a little strange at times, and possibly a little confusing but it's really important to remember.
+
+For example, 0 is true, as is String = "Zero". An empty string can be true as can an empty array.
+
+All numbers are true, all strings are true, well everything is true apart from *false* and *nil*.
+
+This will make more sense as we go through the tutorial but for the time being, just remember it.
+
+# Strings, Objects and Methods
+
+*Strings* are simply a sequence of text that are written in quotation marks. You can use both single and double quotation marks in Ruby so both of the following work:
+
+```
+my_name = 'Jordan'
+my_friends_name = "Ruben"
+```
+
+You can use any charachter in a string, as long as it's between the quotation marks:
+
+```
+my_age = "I'm 30 years old :-)"
+```
+
+You may also have heard in Ruby, that everything is an object. Strings are objects in Ruby and this means they get their very own set of methods. That means you can do fun things like:
+
+```
+"makers academy".upcase
+```
+
+Try it and see what it does.
+
+In the example, the object is everything before the full stop. So `"makers academy"` is the object. The method we are calling is `upcase`. This is the method that will capitalise the object on which it is being called.
+
+You can get a list of methods available for any object by using `irb`. Try
+
+```
+"my name".methods
+```
+
+and see what it returns. There's a lot to go through, have a little play around in `irb` to see what some of them do. For an exhaustive list of all the current methods available you can visit [Ruby Docs](https://www.ruby-doc.org)
+
+Just like with functions in other languages, Ruby methods can have arguments:
+
+```
+"learn to code".include?("code")
+```
+
+will return `true` if the `String` object "learn to code" includes the string "code" which we have _passed_ as an _argument_ to the `include?` method.
+
+```
+Challenge : Is the `include?` method case sensitive? Try it in ``irb`` to find out
+```
+
+# Method Chaining
+
+Method chaining is a handy technique that allows you to sequentially invoke multiple methods in one expression. It helps to improve the readability of the code while reducing the amount of code you actually need to write. We chain methods using the `dot notation`.
+
+In method chaining, the interpreter will pass along the chain of commands from left to right, passing the output from one method to the input of the next, eliminating the need for intermediate variables.
+
+Using Method Chaining :
+
+```
+string_backwards_in_caps = "makers academy".upcase.reverse
+```
+
+Using intermediate variables :
+
+```
+string = "makers academy"
+
+upper_case = string.upcase
+
+string_backwards_in_caps = upper_case.reverse
+```
+The above two expressions will have the same outputs.
+
+In both cases, the string "makers academy" is turned into all capitals using the `upcase` method. The letters are then reveresed using the `reverse` method. The new `String` in capitals and reversed is set to the `variable` called `string_backwards_in_caps`.
+
+Here is slightly more complicated & different version :
+
+```
+"makers academy".upcase.reverse.next.swapcase
+```
+
+Try this in ``irb`` and see what happens.
