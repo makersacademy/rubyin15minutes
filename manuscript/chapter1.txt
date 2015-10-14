@@ -150,4 +150,4 @@ Here is slightly more complicated & different version :
 "makers academy".upcase.reverse.next.swapcase
 ```
 
-Try this in ``irb`` and see what happens.
+Try this in ``irb`` and see what happens to the string.
