@@ -151,3 +151,126 @@ Here is slightly more complicated & different version :
 ```
 
 Try this in ``irb`` and see what happens to the string.
+
+# Conditionals
+
+Conditionals are super simple in Ruby. They’re structured as follows:
+
+```
+if some_condition
+	puts “this code will be executed if some_condition is true”
+else
+	puts “this code will be executed if some_condition is false”
+end
+```
+You’ll need to put the if, else and end keywords on separate lines as shown above. Technically you don’t have to indent the code, but you definitely should. It’s the expected convention (and Ruby loves convention!). Not to mention the fact that it makes the code much easier to read later.
+
+But what about if you want more than one condition? You can use the keyword `elsif`, and you can do something like this :
+
+```
+if some_condition
+	puts “this code will be executed if some_condition is true”
+elsif another_condition
+	puts “this code will be executed if another_condition is true”
+elsif a_third_condition
+	puts “this code will be executed if a_third_condition is true"
+else
+	puts “this code will be executed if none of the above are true”
+end
+```
+use it as many times as you want to try out.
+
+# Defining Methods
+
+The anatomy of a method is as follows :
+
+```
+def method_name(argument_1, argument_2)
+ #your method code goes here
+end
+```
+
+A method always starts with the keyword `def` and finishes with the keyword `end`.
+
+After the `def` goes the method name. This can be anything you like (try to make it relevant to what the method does). Ruby has a list of [reserved words](www.zenspider.com/Languages/Ruby/QuickRef.html#reserved-words) that you **can't** use.
+
+You should try to give your methods clear, descriptive names. Ideally the method should read like a regular English sentence and, if pushed, someone should be able to pretty much guess what the method should do just by the name of the method and the name(s) of the argument(s) that can be passed to it.
+
+If your method takes any arguments, they go in parentheses after the method_name, and are separated with commas.
+
+Some methods take no arguments:
+
+```
+def say_happy_birthday
+	puts "Happy Birthday!!"
+end
+```
+While others take one argument:
+
+```
+￼def say_happy_birthday_to(name)
+     puts “Happy Birthday #{name}”
+end
+```
+
+And some can take two (or more) arguments:
+
+```
+￼def say_happy_birthday_to(name, repetitions)
+     repetitions.times { |i| puts “Happy Birthday #{name}”}
+end
+```
+
+Try this in `irb` and can you figure out a method that will let you say happy birthday to someone 3 times?
+
+```
+say_happy_birthday_to(“Jordan”, 3)
+```
+
+In Ruby, by default, methods will return the last executed statement in the definition. So:
+
+```
+￼def yearly_salary(monthly_salary)
+     monthly_salary * 12
+end
+```
+
+Will both return the value of monthly_salary multiplied by 12. You can assign the output of a method to a variable too, so:
+
+```
+jordans_wishful_yearly_salary = yearly_salary(100,000)
+```
+
+Will set the variable jordans_wishful_yearly_salary to the integer 1,200,00, since we defined the method yearly_salary(100,000) to return 100,000 * 12, which is 1,200,000.
+
+Before you look at the solution on the next page, why don’t you try to write a method that will check whether the number given to it as argument is positive or negative, and display a message with the answer? Try to write it in `irb` now.
+
+```
+SOLUTION:
+
+def positive_or_negative(number)
+     if number > 0
+          puts “Number is positive”
+     else
+          puts “Number is negative”
+     end
+end
+```
+
+You can test if your method is working by entering:
+
+```
+positive_or_negative(-7)
+```
+
+Which should now display Number is negative.
+
+```
+CHALLENGE:
+
+
+Could you try to extend the make_positive method to accommodate the case of 0, which is neither positive nor negative? Tweet @MakersAcademy if you want help, or send us your solution when you’ve worked it out!
+
+```
+
+ 
