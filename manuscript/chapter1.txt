@@ -150,7 +150,7 @@ Here is slightly more complicated & different version :
 "makers academy".upcase.reverse.next.swapcase
 ```
 
-Try this in ``irb`` and see what happens to the string.
+Try this in `irb` and see what happens to the string.
 
 # Conditionals
 
@@ -273,4 +273,194 @@ Could you try to extend the make_positive method to accommodate the case of 0, w
 
 ```
 
- 
+# Arrays
+
+You can think of an Array as a list - a list that’s defined using the square brackets [ ], and a list which can contain any number of objects, of any type.
+
+You can have an empty Array:
+
+```
+[]
+```
+
+Or an Array with some numbers in it:
+
+```
+[1, 2, 3, 4, 5]
+```
+
+You can even have an Array with multiple data types. This one has an integer, 2 Strings and a floating point number:
+```
+[ 1, ‘two’, 3.0, ‘four and five’]
+```
+You can even have what’s called a multi-dimensional Array... Arrays within Arrays!
+
+```
+[ 1, [2, 3], [4,5] ]
+```
+
+You can access each item in an Array using it’s numerical position. Type the following into irb:
+
+```
+￼my_Array = [1, ‘two’, 3]
+my_Array[1]
+```
+
+This will return the item in the Array at position 1.
+
+Did you try it? Were you a little shocked to find that it returned ‘two’??
+
+This is because Arrays in Ruby start counting at 0. The first item in the Array is accessed by executing my_Array[0], the second item with my_Array[1] and so on.
+
+You can change an element simply by reassigning it:
+
+```
+my_Array[1] = 2
+```
+
+If you call my_Array now, you’ll see that its contents are [1, 2, 3]. Just like Strings, Arrays come with built in methods, such as length:
+
+
+```
+ my_Array.length
+ ```
+
+If you’re coding along with me, this will return 3. You can also add new elements to the end of an Array:
+
+```
+my_Array.push(‘four’)
+```
+
+What will my_Array be now? And what will its length be?
+
+```
+￼SOLUTION :
+
+`my_Array`, after the changes executed above, should now be equal to: [1, 2, 3, ‘four’]
+```
+
+# Hashes
+
+
+A good way to think of a hash is as an Array where you access items not by their numerical position but by a unique key.
+
+In an Array, the ‘key’ for accessing a certain object is the number which describes that objects position in that Array.
+
+In a hash, you can decide which `key` is used to access a given value. For example, let’s say you had an Array of capital cities:
+
+```
+capital_cities = [“London”, “Madrid”, “Tokyo”]
+```
+You would be able to get the capital city of England by entering:
+
+```
+capital_cities[0]
+```
+
+But this isn’t very expressive, is it? Nor is it very clear what we expect capital_cities[0] to return. Rather than the integer 0 being the key that returns the capital city of England, wouldn’t it be great if ‘England’ was the key, and ‘London’ the return value?
+
+That’s what a hash is for.
+
+An example hash can be created as follows:
+
+```
+￼capital_cities = { “England” => “London”, “Spain” => “Madrid”, “Japan” => “Tokyo” }
+```
+This means that we can access the value “London” with the key “England” as follows:
+￼
+```
+capital_cities[“England”]
+```
+
+See how it similar it looks to an Array, just with the integer replaced with a more expressive, unique key?
+
+We can then add a new capital city with the expression:
+
+```
+capital_cities[“Hell”] = “Pandaemonium”
+```
+
+# ITERATION
+
+When you write a script that repeats itself somehow, it is called iteration. There are many ways to do iteration. Here are a couple of examples:
+
+```
+￼4.times do
+     puts “Happy Birthday to you”
+end
+```
+
+This will print “Happy Birthday to you” to the screen 4 times.
+
+The part between the do and end is called a block. If you want, you can replace the do and end with curly braces - they are synonymous:
+
+```
+     4.times { puts “Happy Birthday to you” }
+```
+
+The convention in Ruby is that if the contents of the block fit on one line, use curly braces. If the contents of the block require more than one line, use do and end.
+
+But this is a little repetitive, isn’t it? You can do more interesting iterations by creating a local variable inside the block:
+
+```
+     [1, 2, 3].each { |x| puts “I am on iteration #{x}” }
+
+(note that the local variable x is defined inside pipes, which you’ll find by pressing shift + backslash on your Mac)
+
+```
+
+Let’s break this down.
+
+
+On the first iteration, Ruby will take the first item in the Array, the integer 1, and assign it to the local variable x. It will then print out ‘I am on iteration x’, which will literally display “I am on iteration 1”, since the local variable x has been assigned to the first value in the Array on this iteration, which is 1.
+
+On the second iteration, Ruby will take the second item in the Array, the integer 2, and assign it to the local variable x. It will then print out ‘I am on iteration x’, which will literally display “I am on iteration 2”.
+
+On the third iteration, Ruby will take the third item in the Array, the integer 3, and assign it to the local variable x. It will then print out ‘I am on iteration x’, which will literally display “I am on iteration 3”.
+
+Make sense?
+
+Try and understand in your head what would happen if you ran the following:
+
+```
+￼[“went to market”, “stayed home”, “had roast beef”].each do |x|
+     puts “this little piggy #{x}”
+end
+```
+
+And now enter it into `irb` and see if you were right... Were you? What about this one?
+
+```
+￼default = “clap your hands”
+special = “and you really want to show it”
+[default, default, special, default]each do |x|
+     puts “if you’re happy and you know it #{x}”
+end
+```
+
+Making sense yet?
+
+Have a play in `irb` and see if you can get the hang of it.
+
+Why not create an Array of numbers and see if you can iterate over them, displaying, on each occasion, the number multiplied by 2?
+
+You should know that you can iterate over a hash as well as an Array. Let’s go back to our old example:
+
+```
+￼￼￼capital_cities = { “England” => “London”, “Spain” => “Madrid”, “Japan” => “Tokyo” }
+```
+You could print these out in a nice format by doing:
+
+```
+￼capital_cities.each { |country, city| puts “#{country}’s capital is #{city}”}
+```
+
+Enter all this into `irb`... Do you see how it works?
+
+On the first iteration, the key “England” is assigned to the local variable “country”, and the value “London” is assigned to the local variable “city”. (There’s nothing clever going on here - the computer doesn’t recognise them as countries and cities. If the local variables were x and y, it would assign “England” to x and “London” to y - it’s simply going through the key/value pairs in order and assigning them to the local variables that you specify, whatever they may be.
+
+Ruby will then print the statement “#{country}’s capital is #{city}”, with country replaced by “England” and city replaced by “London”.
+
+On the second iteration, the key “Spain” is assigned to the first local variable, which is “country”, and the value “Madrid” is assigned to the second local variable which, for the purposes of readability, we have defined as “city”. Ruby will then print the statement “#{country}’s capital is #{city}”, with country replaced by “Spain” and city replaced by “Madrid”. And so on...
+
+Have a play with this in `irb`. Don’t be afraid to try things out. Have fun. You now know some of the basic syntax of how to write Ruby code in `irb`, so see how far it can take you.
